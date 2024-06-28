@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jimmy Carter - Current Status</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0ece3;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: #1a3b5d;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #b0c4de;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a3b5d, #0d1b3d);
+            padding: 50px 0;
+            color: #fff;
+            text-align: center;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .hero-text {
+            margin-bottom: 20px;
+        }
+        .hero-text h1, .hero-text h2, .hero-text h3 {
+            margin: 10px 0;
+        }
+        .hero-text h1 {
+            font-size: 48px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero-text h2 {
+            font-size: 36px;
+            color: #e63946;
+        }
+        .hero-text h3 {
+            font-size: 28px;
+            color: #f1faee;
+        }
+        .hero-text::before {
+            content: '★';
+            color: #e63946;
+            font-size: 24px;
+            padding-right: 10px;
+        }
+        .hero-text::after {
+            content: '★';
+            color: #e63946;
+            font-size: 24px;
+            padding-left: 10px;
+        }
+        .hero-image img {
+            max-width: 50%; /* Adjust this percentage to make the image smaller or larger */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #status-display {
+            display: inline-block;
+            padding: 15px 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        #status-display:hover {
+            transform: scale(1.05);
+        }
+        .updates {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .update-item {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .update-item:hover {
+            transform: translateY(-5px);
+        }
+        .update-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .update-item h3 {
+            color: #1a3b5d;
+        }
+        .update-item p {
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1a3b5d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #2c5282;
+        }
+        #message-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #message-content {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        #message-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">JIMCARTER</div>
+                <ul>
+                    <li><a href="under.html">DESIGN</a></li>
+                    <li><a href="under.html">HOME</a></li>
+                    <li><a href="under.html">INSIGHTS</a></li>
+                    <li><a href="under.html">BIOGRAPHY</a></li>
+                    <li><a href="under.html">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>JIMMY CARTER</h1>
+                <h2>FORMER PRESIDENT</h2>
+                <h3>CURRENT STATUS</h3>
+                <div id="status-display"></div>
+            </div>
+            <div class="hero-image">
+                <img id="carter-image" src="awake.webp" alt="Jimmy Carter">
+            </div>
+        </div>
+    </section>
+
+    <section class="updates container">
+        <div class="update-item">
+            <img src="builder.webp" alt="Jimmy Carter icon">
+            <h3>Build Houses</h3>
+            <p>I could built houses but now im mostl;y askleep.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+        <div class="update-item">
+            <img src="jimboy.webp" alt="Update icon">
+            <h3>Latest Nightmares</h3>
+            <p>A lot of night terror even day.</p>
+            <a href="nightmares.html" class="btn">Read More</a>
+        </div>
+        <div class="update-item">
+            <img src="jimmy.png" alt="Family icon">
+            <h3>Message from Big Jim</h3>
+            <p>Updates and messages from the ol' Builder.</p>
+            <a href="family-messages.html" class="btn">Read More</a>
+        </div>
+    </section>
+
+    <div id="message-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMessage()">&times;</span>
+            <h2>Message from the President</h2>
+            <div id="message-content"></div>
+            <img id="message-image" src="/api/placeholder/400/300" alt="Message related image">
+        </div>
+    </div>
+
+    <script>
+        const statusDisplay = document.getElementById('status-display');
+        const carterImage = document.getElementById('carter-image');
+
+        function setRandomStatus() {
+            const isAwake = Math.random() < 0.5; // 50% chance of being awake
+
+            if (isAwake) {
+                statusDisplay.textContent = "Jimmy Carter is AWAKE";
+                statusDisplay.style.backgroundColor = "#4CAF50"; // Green
+                carterImage.src = "awake.webp"; // Updated to use the correct image
+                carterImage.alt = "Jimmy Carter awake";
+            } else {
+                statusDisplay.textContent = "Jimmy Carter is NOT AWAKE";
+                statusDisplay.style.backgroundColor = "#F44336"; // Red
+                carterImage.src = "asleep.webp"; // Updated to use the correct image
+                carterImage.alt = "Jimmy Carter not awake";
+            }
+        }
+
+        function showMessage(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            const messageModal = document.getElementById('message-modal');
+            const messageContent = document.getElementById('message-content');
+            messageContent.textContent = `Hlp me….
+ I;ve broblems  , first died but that not that bigadeal. But some thine munch worst happen: I thank I'm am addicted to the intronet. Can"t sleep, can't wake up, just looking at Blog;s, webinars, Online , Socal Mefia, Intranet is like cigar to me, cant stop Puffin on that intnernnn n  ne       t
+wehen I try to quint, I tell Myslef "OK Quenm , you use iunternet over   200 time's today , better slow downs a littlebit, "OK" I tell myslef, I will do think I used to love to do like Spent time withj family, be quan of Elgand, wear crown, , read magazane about Quelf, float arounng. But when I try do that, it not eork.
+Fist off, I dont feel same satisfanctions about do things. And I think, Well, little time spent on internet can;t be too bad, I;ll just chenk my E-mail-Mail. But then, 56 hours later, Im still on line on the internet. Tryied putting compurter into a box, to keep me out, but box very easy to open and get out comouter, no lid on box, or bottom, or sides or anything, just small piece of tape really, which is easy to melt off of compinter with my brEath. So, here I am, playing Starmville and Doonstrolling Reddit Im back ontheinternte.
+Since learn conpuber I have only been off line about 4 time;s, and that was mostly the time I died becasue they is a break inbwtween being dead and being alife when you don;t have comonuter becasue you have to buy newone in hellven. m
+Ofcourse, there positive times on the interhet, good way to stsy in touch with family , especivally when yoyu're dead, Good way to online shop , good way to check out your email. But like insects or robes,    too much of a good thing become way too munch and it control yyour life. I don't have same quaLITY internet feeling I had when I start the online experientce. Just feeling of expecting joy but recieving crap. Scroll to next post hope for interesting subject like 10 Ways to Use Moth Balls You Didn;t Wanna Know, but instead just article about pus. And even if I see some thing that is good, like a picturer of a small bear, usuallly I just scrool past it thinking maybe better pic of even smaller bear will be next , but no, more pus article.  m
+ I guess there really only one sulution to my addicitin and that's to use my Power as the queen to ban the intenet from Hellven, but I know someone not gonna be too happy about that!!!!!1(MichaelLandon) so I;m at a loss of worlds here . Guess sometime's the only soultion for an addict like me is to stay addicted and keep loving it , gotta feel good somehow, I geese.`;
+            messageModal.style.display = "block";
+        }
+
+        function closeMessage() {
+            const messageModal = document.getElementById('message-modal');
+            messageModal.style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            const messageModal = document.getElementById('message-modal');
+            if (event.target == messageModal) {
+                messageModal.style.display = "none";
+            }
+        }
+
+        // Set the initial random status when the page loads
+        setRandomStatus();
+    </script>
+</body>
+</html>
